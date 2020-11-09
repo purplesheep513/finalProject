@@ -7,7 +7,7 @@ export const list = async ctx=>{
     // console.log('접속유저: ',ctx.state.user)
     // const login_id = ctx.state.user._id//로그인한아이디
 
-    const login_id = '5f9f69328413900d78dd8774'
+    const login_id = '5fa4a83aa6973c17f83c8756'
     let my_id = await Matching.findOne({'user':login_id})//token에 저장된 내 정보로 matching스키마가져오기
     const user = await User.findById(login_id)//user안에 id검색하여 상수에저장
     if(!login_id){//토큰에 저장된 아이디 없으면 오류페이지.
@@ -64,7 +64,9 @@ export const list = async ctx=>{
 
 //좋아요 눌렀을때
 export const like = async ctx=>{
-    const login_id = ctx.state.user._id//로그인한아이디
+    // const login_id = ctx.state.user._id//로그인한아이디
+
+    const login_id = '5fa4a83aa6973c17f83c8756'
     let my_id = await Matching.findOne({'user':login_id})
     const { id } = ctx.request.body//상대방 id정보
     const query = { '_id': my_id._id }
@@ -100,14 +102,16 @@ export const like = async ctx=>{
 
 //넘기기 눌렀을때
 export const pass = async ctx=>{
-    const login_id = ctx.state.user._id//로그인한아이디
+    // const login_id = ctx.state.user._id//로그인한아이디
+
+    const login_id = '5fa4a83aa6973c17f83c8756'
     const my_id = await Matching.findOne({'user':login_id})
     const { id } = ctx.request.body//내 id, 상대방 id정보
-    const query = { '_id': my_id.id }
+    const query = { 'user': login_id }
     
     try{
         // 내 정보 안에 있는 pass에 상대방의 정보를 추가한다.
-        const user_pass = await Matching.findOneAndUpdate(query, { $push: { pass: id } }, {
+        await Matching.findOneAndUpdate(query, { $push: { pass: id } }, {
             new: true
         }).exec()
         // 내정보 안에 있는 back에 상대방 정보를 갱신한다. 뒤로가기할때 불러올 정보다
@@ -124,7 +128,9 @@ export const pass = async ctx=>{
 
 //슈퍼라이크
 export const sendSuper = async ctx=>{
-    const login_id = ctx.state.user._id//로그인한아이디
+    // const login_id = ctx.state.user._id//로그인한아이디
+
+    const login_id = '5fa4a83aa6973c17f83c8756'
     const my_id = await Matching.findOne({'user':login_id})
     const { id } = ctx.request.body//상대방id
     const query = { '_id': my_id._id }
@@ -168,7 +174,9 @@ export const sendSuper = async ctx=>{
 //되돌리기
 
 export const back = async ctx=>{
-    const login_id = ctx.state.user._id//로그인한아이디
+    // const login_id = ctx.state.user._id//로그인한아이디
+
+    const login_id = '5fa4a83aa6973c17f83c8756'
     const user = await User.findById(login_id)//user안에 id검색하여 상수에저장
     try{
         const back_user = await Matching.findOne({'user':login_id}).populate('back')
@@ -176,7 +184,11 @@ export const back = async ctx=>{
             ctx.status = 402
             ctx.body="결제를하세요"
         }else{//했으면 볼 수 있다.
-            ctx.body = back_user.back //이전 유저 정보
+            if(back_user.back){
+                ctx.body = await User.findOne({'match' : back_user.back.id})  //이전 유저 정보
+                await Matching.findOneAndUpdate({'user':login_id}, { $set: { back: null} })
+            }else{
+            }
         }
     }catch(e){
         ctx.throw(500,e)
@@ -200,4 +212,8 @@ export const checkLikeMe = async ctx=>{
     }catch(e){
         ctx.throw(500,e)
     }
+}
+
+export const report  = async ctx => {
+    
 }

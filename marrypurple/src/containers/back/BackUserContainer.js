@@ -1,43 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Matching from '../../components/matching/Matching';
-import { matchingList, unloadList } from '../../modules/matching'
+import { backList, unloadBackList } from '../../modules/back'
 import { withRouter } from 'react-router-dom';
 
 const MatchingContainer = ({match}) => {
-    const urlAddress = match.url 
+    const urlAddress = match.url // url경로
 
-    const [showProfile, setShowProfile] = useState({
+    const [showProfile, setShowProfile] = useState({//div껐다켰다 하는 용도로 만든 state
         profileActive: false,
         reportActive: false
     })
-    const onToggle = () => {
+    const onToggle = () => {//프로필보기 버튼 눌렀을 때 실행
         setShowProfile({
             ...showProfile,
             profileActive : !showProfile.profileActive
         })
     };
-    const onToggle_report = () => {
+    const onToggle_report = () => { //신고하기버튼 눌렀을 때 실행
         setShowProfile({
             ...showProfile,
             reportActive : !showProfile.reportActive
         })
     };
-    const dispatch = useDispatch();
-    const { matching, error, loading } = useSelector(({ matching, loading }) => ({
-        matching: matching.matching,
-        error: matching.error,
-        loading: loading['match/MATCH_LIST']
+    const dispatch = useDispatch();//디스패치 만들기
+    const { back, error, loading } = useSelector(({ back, loading }) => ({ 
+        //selector에서 module에서 저장해둔 값 불러온다.
+        back: back.back,
+        error: back.error,
+        loading: loading['match/FIND_BACK_USER']
     }));
     useEffect(() => {
-        dispatch(matchingList());
+        dispatch(backList());//module에서 저장해둔 액션 디스패치
         return () => {
-            dispatch(unloadList());
+            dispatch(unloadBackList());//module에서 저장해둔 사가 디스패치
         };
     }, [dispatch]);
     return (
             <Matching 
-                matching={matching} 
+                back={back} 
                 error={error} 
                 loading={loading} 
                 onToggle={onToggle} 

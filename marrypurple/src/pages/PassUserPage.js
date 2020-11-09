@@ -1,18 +1,17 @@
 import React from 'react';
-import MatchingContainers from '../containers/matching/MatchingContainer'
+import BackUserContainer from '../containers/back/BackUserContainer'
 import SideMenuContainer from '../containers/common/SideMenuContainer';
 import ContentContainer from '../containers/common/ContentContainer';
 
-const MatchingPage = () => {
+const PassUserPage = () => {
     return(
         <div id="wrap10">
             <SideMenuContainer/>
             <ContentContainer>
-                <MatchingContainers/>
+                <BackUserContainer/>
             </ContentContainer>
-                        
         </div>
     )
 }
 
-export default MatchingPage
+export default PassUserPage;

@@ -11,6 +11,7 @@ import RegistPage from './pages/RegistPage';
 import FindPwPage from './pages/FindPwPage';
 import ChangePwPage from './pages/ChangePwPage';
 import MatchingPage from './pages/MatchingPage'
+import BackUserPage from './pages/BackUserPage';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
       <Route component={FaqPage} path="/FAQ"/>
       <Route component={WorkPage} path="/work"/>
       <Route component={MatchingPage} path="/match"/>
+      <Route component={BackUserPage} path="/back"/>
     </>
   )
 }
