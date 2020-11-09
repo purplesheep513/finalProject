@@ -22,8 +22,6 @@ let passport = require('passport');
 let flash = require('flash');
 const logger = require('morgan');
 
-
-
 const { PORT, MONGO_URL } = process.env;
 
 mongoose.connect(MONGO_URL, { useNewUrlParser: true, useFindAndModify: false }).then(() => {
@@ -34,6 +32,7 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useFindAndModify: false }).
 
 const app = new Koa();
 const router = new Router();
+app.use((serve(__dirname + '/public')))
 
 router.use('/api', api.routes());
 app.use(bodyParser());
@@ -42,7 +41,8 @@ app.use(jwtMiddleware);
 app.use(router.routes()).use(router.allowedMethods());
 
 
-router.use('/uploads',serve(path.resolve(__dirname, './api/enter_gram/uploads')));
+// router.use('/uploads',serve(path.resolve(__dirname, './api/enter_gram/uploads')));
+
 
 router.get('/', ctx => {
     ctx.body = '홍';
@@ -67,10 +67,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-
-
 app.use(logger('dev'));
-
 
 const port = PORT || 4000;
 const server = app.listen(port, () => {
