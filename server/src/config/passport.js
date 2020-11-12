@@ -1,3 +1,5 @@
+
+
 let facebook = require('./passport/facebook');
 let kakao = require('./passport/kakao');
 let google = require('./passport/google');
@@ -17,8 +19,7 @@ module.exports = function (app, passport){
         done(null, user);
     });
 
-    passport.use('local-login', local_login);
-    passport.use('local-signup', local_signup);
+
     passport.use('facebook',facebook(app,passport));
     passport.use('kakao',kakao(app,passport));
     passport.use('google',google(app,passport));

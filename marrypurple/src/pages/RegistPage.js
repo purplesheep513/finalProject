@@ -1,13 +1,9 @@
 import React from "react";
-import Regist from "../components/auth/regist";
-
+// import Register from "../components/auth/regist";
+import RegistForm from "../containers/auth/RegistForm";
 const RegistPage = () => {
     return(
-        <div>
-            <Regist>
-
-            </Regist>
-        </div>
+                <RegistForm />
     );
 };
 

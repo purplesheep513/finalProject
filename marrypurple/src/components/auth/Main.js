@@ -12,7 +12,7 @@ const Main = () => {
             <a href="#" class="mLogo"><img src={mLogo} alt="메인로고"/></a>
             <ul class="mHead">
                 <li class="MbtnLogin"><a><Link to="/login">login</Link></a></li>
-                <li class="MbtnJoin"><a><Link to="./regist">join</Link></a></li>
+                <li class="MbtnJoin"><a><Link to="/register">join</Link></a></li>
             </ul>
             <div id="mText">
                 <h2>Marry Purple</h2>

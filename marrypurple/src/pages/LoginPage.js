@@ -1,13 +1,10 @@
 import React from "react";
 import Login from "../components/auth/Login";
+// import AuthTemplate from "../components/auth/MarryTemplate"
 
 const LoginPage = () => {
     return(
-        <div>
-            <Login>
-
-            </Login>
-        </div>
+            <Login/>
     );
 };
 

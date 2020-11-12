@@ -16,7 +16,7 @@ time, mark, audio, video {
     margin: 0; padding: 0;
 }
 ul, ol, li { list-style: none; }
-input[type=button], input[type=submit] { cursor: pointer;}
+input[type=button], input[type=submit],input[type=file] { cursor: pointer;}
 #wrap { width: 100%; height:100%;}
 
 /* 회원가입 */
@@ -28,9 +28,9 @@ input[type=button], input[type=submit] { cursor: pointer;}
 .regiId,.regiPw, .regiPro { position: relative; margin: 0 auto; text-align: center;}
 .regiId span, .regiPw span { margin-right: 480px;}
 .inputId { width: 422px; height: 57px; display: inline-block; position: relative; margin: 0 auto; }
-.inputId input { display: inline-block; padding-top: 16px; padding-bottom: 16px; padding-left: 20px; padding-right: 20px; width: 90%; border: 2px solid #e8e8e8; border-radius: 8px; background-color: #f5f7fa; margin: 0 auto; }
+.inputId input,button { display: inline-block; padding-top: 16px; padding-bottom: 16px; padding-left: 20px; padding-right: 20px; width: 90%; border: 2px solid #e8e8e8; border-radius: 8px; background-color: #f5f7fa; margin: 0 auto; }
 .flexS {justify-content: flex-start;}
-.inputId input::-webkit-input-placeholder:before{
+.inputId button,input::-webkit-input-placeholder:before{
     display: inline-block; width: 21px; height: 17px; background: url(../img/email.png) no-repeat; content:'';
 }
 .getE { width: 100px; height: 53px; display: inline-block; margin-left: 15px;
@@ -54,9 +54,9 @@ input[type=button], input[type=submit] { cursor: pointer;}
 .regiBack a {color: #5c5c5c; font-weight: 800; font-size: 1.2rem;}
 .regiBack a:hover { letter-spacing: .1em; font-weight: 600; color: #2c2c2c; text-transform: uppercase; margin-top: 10px; cursor: pointer }
 .regiBack a::selection{ text-shadow: none; }
-.regiGo input { width: 100px; height: 33px; display: inline-block;  margin-top:50px; margin-left: 15px;
+.regiGo button { width: 200px; height: 50px; display: inline-block; padding: 0; margin-top: 50px;
     border: 2px solid  #e8e8e8; background-color: #f5f7fa; border-radius: 8px;}
-.getNick {display: inline-block; padding-top: 16px; padding-bottom: 16px; padding-left: 20px; padding-right: 20px; width: 90%; border: 2px solid #e8e8e8; border-radius: 8px; background-color: #f5f7fa; margin: 0 auto;}
+.getNick {display: inline-block; padding-top: 16px; padding-bottom: 16px; padding-left: 20px; padding-right: 20px; width: 80%; border: 2px solid #e8e8e8; border-radius: 8px; background-color: #f5f7fa; margin: 0 auto;}
     
 .radio_area { height: 45px; box-sizing: border-box; padding-top: 12px; }
 .radio_area p { margin-bottom: 10px;}
@@ -70,6 +70,8 @@ input[type=button], input[type=submit] { cursor: pointer;}
 .radio_area input[type=radio].css-radio:checked + label{
     background-position: 0 -50px;
 }
+.picName { padding-bottom: 15px;}
+
 /* 비밀번호 찾기 */
 .findPw { margin-top: 100px;}
 .reBtn { width: 100%; margin: 0 auto; text-align: center;}
@@ -90,8 +92,8 @@ input[type=button], input[type=submit] { cursor: pointer;}
     .inputPro { width: 250px; height: 53px; display: block; margin: 0 auto; margin-bottom: 30px; }
     .regiGender {margin-top: 0; margin-bottom: 50px;}
     .inputG p { margin-right: 20px; }
-    .regiGo input { width: 90%; height: 50px; display: inline-block;  margin: 0 auto; margin-top:20px; margin-left: 15px; font-size: 2rem; color: #5c5c5c;
-        border: 2px solid  #e8e8e8; background-color: #f5f7fa; border-radius: 8px;}
+    .regiGo button { width: 90%; height: 50px; display: inline-block;  margin: 0 auto; margin-top:20px; margin-left: 15px; font-size: 2rem; color: #5c5c5c;
+        border: 2px solid  #e8e8e8; background-color: #f5f7fa; border-radius: 8px;  padding: 0px;}
     .getNick {display: inline-block; padding-top: 16px; padding-bottom: 16px; padding-left: 20px; padding-right: 20px; width: 210px; border: 2px solid #e8e8e8; border-radius: 8px; background-color: #f5f7fa; margin: 0 auto;}
     .findPw { margin-top: 160px;}
     .changePw input{ width: 300px;}

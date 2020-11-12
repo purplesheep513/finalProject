@@ -18,7 +18,7 @@ const App = () => {
       <Route component={MainPage} path="/" exact/>
       <Route component={LoginPage} path="/login"/>
       <Route component={MarryLoginPage} path="/marrylogin"/>
-      <Route component={RegistPage} path="/regist"/>
+      <Route component={RegistPage} path="/register"/>
       <Route component={FindPwPage} path="/findPw"/>
       <Route component={ChangePwPage} path="/changePw"/>
       <Route component={GramPage} path="/gram_main"/>

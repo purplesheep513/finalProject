@@ -13,15 +13,16 @@ module.exports =function(app,passport){
         console.dir(profile);
 
         let options ={
-            criteria : {'user_email':profile.id}
+            criteria : {'userid':profile.id}
         };
 
         let database = app.get('database');
-        database.UserModel.findOne({user_email:profile.id},(err, user)=>{
+        database.UserModel.findOne({userid:profile.id},(err, user)=>{
             if(err) return done(err);
             if(!user){
                 let user = new database.UserModel({
-                    user_email: profile.id,
+                    name: profile.displayName,
+                    userid: profile.id,
                     provider: 'kakao',
                     authToken: accessToken,
                     kakao:profile._json

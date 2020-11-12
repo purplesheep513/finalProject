@@ -14,7 +14,7 @@ module.exports =function(app,passport){
         console.dir(profile);
 
         let options ={
-            criteria : {'user_email':profile.id}
+            criteria : {'userid':profile.id}
         };
 
         let database = app.get('database');
@@ -22,6 +22,7 @@ module.exports =function(app,passport){
             if(err) return done(err);
             if(!user){
                 let user = new database.UserModel({
+                    name: profile.displayName,
                     user_email: profile.id,
                     provider: 'facebook',
                     authToken: accessToken,

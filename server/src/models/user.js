@@ -68,6 +68,7 @@ const UserSchema = new Schema({
     },
     match:{ type: mongoose.Schema.Types.ObjectId, ref: 'Matching' },
     provider: {type: String, default:''},
+    authToken : {type: String , default:''},
     facebook:{},
     kakao:{},
     google:{}
@@ -87,7 +88,7 @@ UserSchema.methods.checkUser_pw = async function(user_pw){
 
 //username찾아 전달받는
 UserSchema.statics.findByUser_email = function(user_email){
-    return this.findOne({user_email});
+    return this.findOne({"user_email": user_email});
 }
 
 UserSchema.methods.serialize = function(){
@@ -95,6 +96,7 @@ UserSchema.methods.serialize = function(){
     delete data.hashedUser_pw;
     return data;
 }
+
 
 //토큰만드는거
 UserSchema.methods.generateToken = function(){
@@ -111,6 +113,7 @@ UserSchema.methods.generateToken = function(){
     return token;
 }
 
-const User = mongoose.model('User', UserSchema);
+const 
+User = mongoose.model('User', UserSchema);
 
 export default User;

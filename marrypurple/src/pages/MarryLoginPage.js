@@ -1,13 +1,9 @@
 import React from "react";
-import MarryLogin from "../components/auth/MarryLogin";
+import LoginForm from "../containers/auth/LoginForm";
 
 const MarryLoginPage = () => {
     return(       
-        <>     
-            <MarryLogin>
-
-            </MarryLogin>
-        </>
+        <LoginForm />
     );
 };
 

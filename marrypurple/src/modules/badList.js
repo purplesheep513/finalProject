@@ -14,8 +14,8 @@ export const badListPosts = createAction(
     ({ user_nick, reason }) => ({ user_nick, reason })
 );
 
-const badListSaga = createRequestSaga(BADLIST_POSTS, badListAPI.listBad);
-export function* badPostsSaga(){
+const badListSaga = createRequestSaga(BADLIST_POSTS, badListAPI.badList);
+export function* badListSagaPostsSaga(){
     yield takeLatest(BADLIST_POSTS, badListSaga);
 }
 
@@ -26,7 +26,7 @@ const initialState = {
 
 const badList = handleActions(
     {
-        [BADLIST_POSTS_SUCCESS]: (state, { payload: badList, meta: response }) => ({
+        [BADLIST_POSTS_SUCCESS]: (state, { payload: badList }) => ({
             ...state,
             badList
         }),

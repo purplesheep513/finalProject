@@ -2,7 +2,10 @@ import Joi from "@hapi/joi";
 import User from "../../models/user";
 
 
-export const register = async ctx => {
+export const register = async (ctx) => {
+  console.log('회원가입중')
+  // console.log(ctx.request.body.user_email);
+  // console.log(JSON.stringify(ctx.req.profile_pic));
   // 회원 가입
 // const schema = Joi.object().keys({
 //     user_email: Joi.string().required(),
@@ -24,12 +27,13 @@ export const register = async ctx => {
 //     stopAccount: Joi.string().default('false'),
 //     match_gender:  Joi.string().default('both')
 //   });
-  const user_email = ctx.req.body.user_email;
-  const user_pw = ctx.req.body.user_pw;
-  const user_gender= ctx.req.body.user_gender;
-  const user_age = ctx.req.body.user_age;
-  const user_nick = ctx.req.body.user_nick;
-  const profile_pic = ctx.req.files[0].filename;
+  const user_email = ctx.request.body.user_email;
+  const user_pw = ctx.request.body.user_pw;
+  const user_gender= ctx.request.body.user_gender;
+  const user_age = ctx.request.body.user_age;
+  const user_nick = ctx.request.body.user_nick;
+  const profile_pic = ctx.request.body.profile_pic;
+  
   
   // const  join_date = "";
   // const brief_intro = "";
@@ -47,24 +51,25 @@ export const register = async ctx => {
     if (exists) {
       ctx.status = 409;
       return;
+    }else{
+      const user = new User({
+        user_email: user_email,
+        user_gender: user_gender,
+        user_age: user_age,
+        user_nick: user_nick,
+        profile_pic: profile_pic,
+      });
+      await user.setUser_pw(user_pw);
+      await user.save();
+  
+      ctx.body = user.serialize();
+  
+      const token = user.generateToken();
+      ctx.cookies.set("access_token", token, {
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        httpOnly: true,
+      });
     }
-    const user = new User({
-      user_email: user_email,
-      user_gender: user_gender,
-      user_age: user_age,
-      user_nick: user_nick,
-      profile_pic: [profile_pic],
-    });
-    await user.setUser_pw(user_pw);
-    await user.save();
-
-    ctx.body = user.serialize();
-
-    const token = user.generateToken();
-    ctx.cookies.set("access_token", token, {
-      maxAge: 1000 * 60 * 60 * 24 * 7,
-      httpOnly: true,
-    });
   } catch (e) {
     ctx.throw(500, e);
   }
