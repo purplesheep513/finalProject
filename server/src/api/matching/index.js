@@ -9,5 +9,6 @@ match.patch('/super', matchCtrl.sendSuper)      // 슈퍼라이크 눌렀을 때
 match.patch('/pass', matchCtrl.pass);           // 넘기기 눌렀을 때
 match.get('/back', matchCtrl.back);             // (유료) 되돌리기 눌렀을 때
 match.get('/who', matchCtrl.checkLikeMe)        // 나를 라이크 한 사람 보기
+match.get('/report', matchCtrl.report)        // 사용자 신고
 
 export default match;

@@ -9,7 +9,7 @@ const BadBoardPage = () => {
             <div id="wrap">
                 <SideMenuContainer/>
                 <ContentContainer >
-                    안녕하세요
+                    <BadBoardContainer/>
                 </ContentContainer>
             </div>
         </>

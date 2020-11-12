@@ -6,7 +6,7 @@ import $ from 'jquery';
 import { Helmet } from 'react-helmet';
 
 const SideMenu = () => {
-    const script = () => {
+    async function script(){
         console.log(window.location.pathname);
         let currentPage = window.location.pathname;
 
@@ -122,6 +122,123 @@ const SideMenu = () => {
             $('.enterM_1 a:nth-child(7)').toggleClass('on2');
         });
     }
+
+    // const script = () => {
+    //     console.log(window.location.pathname);
+    //     let currentPage = window.location.pathname;
+
+    //     switch(currentPage){
+    //         case '/match':
+    //         case '/match_like':
+    //         case '/match_profile':
+    //             $('#m1').addClass('on');
+    //             $('#slide_box div').removeClass('on').removeClass('off');
+    //             $('#sub_menu_match').addClass('on');
+    //             $('#sub_menu_match').siblings().addClass('off');
+    //             break;
+    //         case '/message':
+    //         case '/message_profile':
+    //             $('#m2').addClass('on');
+    //             $('#slide_box div').removeClass('on').removeClass('off');
+    //             $('#sub_menu_message').addClass('on');
+    //             $('#sub_menu_message').siblings().addClass('off');
+    //             break;
+    //         case '/worldcup1':
+    //         case '/worldcup2':
+    //         case '/worldcup3':
+    //         case '/Telepathy':
+    //         case '/Telepathy_make_quiz':
+    //         case '/Telepathy_get_quiz':
+    //         case '/find_main':
+    //         case '/find_select':
+    //         case '/find_match':
+    //         case '/gram_main':
+    //         case '/gram_write':
+    //         case '/gram_post':
+    //         case '/board_bad':
+    //             $('#m3').addClass('on');
+    //             $('#slide_box div').removeClass('on').removeClass('off');
+    //             $('#sub_menu_enter').addClass('on');
+    //             $('#sub_menu_enter').siblings().addClass('off');
+    //             switch(currentPage){
+    //                 case '/worldcup1':
+    //                 case '/worldcup2':
+    //                 case '/worldcup3':
+    //                     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(1)').addClass('on');
+    //                     break;
+    //                 case '/Telepathy':
+    //                 case '/Telepathy_make_quiz':
+    //                 case '/Telepathy_get_quiz':
+    //                     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(2)').addClass('on');
+    //                     break;
+    //                 case '/find_main':
+    //                 case '/find_select':
+    //                 case '/find_match':
+    //                     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(3)').addClass('on');
+    //                     break;
+    //                 case '/gram_main':
+    //                 case '/gram_write':
+    //                 case '/gram_post':
+    //                     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(4)').addClass('on');
+    //                     break;
+    //                 case '/board_bad':
+    //                     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(6)').addClass('on');
+    //                     break;
+    //             }
+    //     }
+
+    //     // 서브 메뉴 클릭시
+    //     $('#m1').on('click', function() { 
+    //         $('#slide_box div').removeClass('on').removeClass('off');
+    //         $('#sub_menu_match').addClass('on');
+    //         $('#sub_menu_match').siblings().addClass('off');
+    
+    //         $('#sub_menu a').removeClass('on');
+    //         $(this).addClass('on');
+    //     });
+    //     $('#m2').on('click', function() {
+    //         $('#slide_box div').removeClass('on').removeClass('off');
+    //         $('#sub_menu_message').addClass('on');
+    //         $('#sub_menu_message').siblings().addClass('off');
+    
+    //         $('#sub_menu a').removeClass('on');
+    //         $(this).addClass('on');
+    //     });
+    //     $('#m3').on('click', function() {
+    //         $('#slide_box div').removeClass('on').removeClass('off');
+    //         $('#sub_menu_enter').addClass('on');
+    //         $('#sub_menu_enter').siblings().addClass('off');
+    
+    //         $('#sub_menu a').removeClass('on');
+    //         $(this).addClass('on');
+    //     });
+    //     $('#myprofile_btn').on('click', function() {
+    //         $('#slide_box div').removeClass('on').removeClass('off');
+    //         $('#sub_menu_myprofile').addClass('on');
+    //         $('#sub_menu_myprofile').siblings().addClass('off');
+    
+    //         $('#sub_menu a').removeClass('on');
+    //         $(this).addClass('on');
+    //     });
+
+    //     // 공지사항 누르면
+    //     // 웹 버전
+    //     $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(5)').on('click', function(){
+    //         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(6)').toggleClass('on2');
+    //         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(7)').toggleClass('on2');
+    //     });
+
+    //     if($('#left_menu #slide_box #sub_menu_enter ul a:nth-child(6)').hasClass('on') || $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(7)').hasClass('on')){
+    //         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(6)').addClass('on2');
+    //         $('#left_menu #slide_box #sub_menu_enter ul a:nth-child(7)').addClass('on2');
+    //     }
+
+    //     // 모바일 버전
+    //     $('.enterM_1 a:nth-child(5)').on('click', function(){
+    //         $('.enterM_1 a:nth-child(6)').toggleClass('on2');
+    //         $('.enterM_1 a:nth-child(7)').toggleClass('on2');
+    //     });
+    // }
 
     script();
 
@@ -272,4 +389,4 @@ const SideMenu = () => {
     )
 };
 
-export default SideMenu;
+export default SideMenu
